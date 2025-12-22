@@ -40,8 +40,12 @@
   <input type="text" placeholder="URL de la imagen" required>
 
   <label>
-    <input type="checkbox"> Destacado
-  </label>
+  <input type="checkbox"> Destacado
+</label>
+
+<label>
+  <input type="checkbox"> Vendido
+</label>
 
   <button type="submit">Guardar auto</button>
 </form>
@@ -60,7 +64,9 @@
       km: Number(inputs[3].value),
       precio: Number(inputs[4].value),
       imagen: inputs[5].value,
-      destacado: inputs[6].checked
+      destacado: inputs[6].checked,
+      vendido: inputs[7].checked
+
     };
 
     const autos = JSON.parse(localStorage.getItem("autos")) || [];
