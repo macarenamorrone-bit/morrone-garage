@@ -184,3 +184,12 @@ footer {
   font-size: 28px;
   cursor: pointer;
 }
+
+.badge.vendido {
+  background: #b00020;
+}
+
+.card.vendido {
+  opacity: 0.6;
+  pointer-events: none;
+}
