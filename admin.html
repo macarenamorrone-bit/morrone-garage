@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Morrone Garage</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 40px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+    input, button, label {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px;
+    }
+    button {
+      background: #25d366;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Panel Admin – Morrone Garage</h2>
+
+<form id="autoForm">
+  <input type="text" placeholder="Marca" required>
+  <input type="text" placeholder="Modelo" required>
+  <input type="number" placeholder="Año" required>
+  <input type="number" placeholder="Kilómetros" required>
+  <input type="number" placeholder="Precio USD" required>
+  <input type="text" placeholder="URL de la imagen" required>
+
+  <label>
+    <input type="checkbox"> Destacado
+  </label>
+
+  <button type="submit">Guardar auto</button>
+</form>
+
+<script>
+  const form = document.getElementById("autoForm");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const inputs = form.querySelectorAll("input");
+    const auto = {
+      marca: inputs[0].value,
+      modelo: inputs[1].value,
+      año: Number(inputs[2].value),
+      km: Number(inputs[3].value),
+      precio: Number(inputs[4].value),
+      imagen: inputs[5].value,
+      destacado: inputs[6].checked
+    };
+
+    const autos = JSON.parse(localStorage.getItem("autos")) || [];
+    autos.push(auto);
+    localStorage.setItem("autos", JSON.stringify(autos));
+
+    alert("Auto guardado 🚗🔥");
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
