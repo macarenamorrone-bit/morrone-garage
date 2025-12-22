@@ -50,8 +50,50 @@
   <button type="submit">Guardar auto</button>
 </form>
 
+<h3>Autos cargados</h3>
+<div id="listaAutos"></div>
+
 <script>
   const form = document.getElementById("autoForm");
+  const listaAutos = document.getElementById("listaAutos");
+
+  function obtenerAutos() {
+    return JSON.parse(localStorage.getItem("autos")) || [];
+  }
+
+  function guardarAutos(autos) {
+    localStorage.setItem("autos", JSON.stringify(autos));
+  }
+
+  function renderAutos() {
+    const autos = obtenerAutos();
+    listaAutos.innerHTML = "";
+
+    autos.forEach((auto, index) => {
+      const div = document.createElement("div");
+      div.style.border = "1px solid #444";
+      div.style.padding = "10px";
+      div.style.marginBottom = "10px";
+
+      div.innerHTML = `
+        <strong>${auto.marca} ${auto.modelo}</strong><br>
+        ${auto.año} • ${auto.km} km • USD ${auto.precio}<br>
+        Estado: ${auto.vendido ? "VENDIDO ❌" : "Disponible ✅"}<br>
+        ${!auto.vendido ? `<button data-index="${index}">Marcar como vendido</button>` : ""}
+      `;
+
+      const btn = div.querySelector("button");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          autos[index].vendido = true;
+          guardarAutos(autos);
+          renderAutos();
+        });
+      }
+
+      listaAutos.appendChild(div);
+    });
+  }
 
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -66,17 +108,20 @@
       imagen: inputs[5].value,
       destacado: inputs[6].checked,
       vendido: inputs[7].checked
-
     };
 
-    const autos = JSON.parse(localStorage.getItem("autos")) || [];
+    const autos = obtenerAutos();
     autos.push(auto);
-    localStorage.setItem("autos", JSON.stringify(autos));
+    guardarAutos(autos);
 
     alert("Auto guardado 🚗🔥");
     form.reset();
+    renderAutos();
   });
+
+  renderAutos();
 </script>
+
 
 </body>
 </html>
