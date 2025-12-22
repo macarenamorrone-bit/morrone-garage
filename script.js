@@ -36,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         card.className = auto.destacado ? "card destacado" : "card";
 
         card.innerHTML = `
-          ${auto.destacado ? `<span class="badge">DESTACADO</span>` : ""}
+          ${auto.destacado && !auto.vendido ? `<span class="badge">DESTACADO</span>` : ""}
+          ${auto.vendido ? `<span class="badge vendido">VENDIDO</span>` : ""}
+
           <img src="${auto.imagen}">
           <h3>${auto.marca} ${auto.modelo}</h3>
           <p>${auto.año} • ${auto.km.toLocaleString()} km</p>
@@ -44,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         card.addEventListener("click", () => {
+          if (auto.vendido) return;
+
           modalImg.src = auto.imagen;
           modalTitulo.textContent = `${auto.marca} ${auto.modelo}`;
           modalInfo.textContent = `${auto.año} • ${auto.km.toLocaleString()} km`;
@@ -91,4 +95,5 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarAutos(autos);
 
 });
+
 
