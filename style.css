@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0f0f0f;
+  color: #fff;
+}
+
+/* HEADER */
+header {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+              url("https://via.placeholder.com/1200x800");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+}
+
+header span {
+  color: #e63946;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #e63946;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+}
+
+/* AUTOS */
+.autos {
+  padding: 60px 20px;
+}
+
+.autos h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #1c1c1c;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card h3 {
+  margin-top: 15px;
+}
+
+.card p {
+  opacity: 0.8;
+}
+
+.card strong {
+  display: block;
+  margin: 10px 0;
+  color: #e63946;
+  font-size: 1.1rem;
+}
+
+.whatsapp {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 25px;
+  background: #25d366;
+  color: #000;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* DESTACADO */
+.destacado {
+  border: 2px solid #e63946;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+}
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filtros select {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* BADGE DESTACADO */
+.card {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #e63946;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.destacado {
+  border: 2px solid #e63946;
+  transform: scale(1.02);
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
