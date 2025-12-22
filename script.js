@@ -2,36 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const WHATSAPP = "5492291466679";
 
-  const autos = [
-    {
-      marca: "Volkswagen",
-      modelo: "Golf",
-      año: 2016,
-      km: 120000,
-      precio: 12500,
-      imagen: "https://via.placeholder.com/400x250",
-      destacado: true
-    },
-    {
-      marca: "Ford",
-      modelo: "Focus",
-      año: 2018,
-      km: 90000,
-      precio: 11000,
-      imagen: "https://via.placeholder.com/400x250",
-      destacado: false
-    },
-    {
-      marca: "Toyota",
-      modelo: "Corolla",
-      año: 2019,
-      km: 70000,
-      precio: 14500,
-      imagen: "https://via.placeholder.com/400x250",
-      destacado: true
-    }
-  ];
-
   // ELEMENTOS
   const autosContainer = document.getElementById("autosContainer");
   const marcaFiltro = document.getElementById("marcaFiltro");
@@ -121,3 +91,4 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarAutos(autos);
 
 });
+
