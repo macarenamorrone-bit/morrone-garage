@@ -76,11 +76,36 @@
       div.style.marginBottom = "10px";
 
       div.innerHTML = `
-        <strong>${auto.marca} ${auto.modelo}</strong><br>
-        ${auto.año} • ${auto.km} km • USD ${auto.precio}<br>
-        Estado: ${auto.vendido ? "VENDIDO ❌" : "Disponible ✅"}<br>
-        ${!auto.vendido ? `<button data-index="${index}">Marcar como vendido</button>` : ""}
-      `;
+  <strong>${auto.marca} ${auto.modelo}</strong><br>
+  ${auto.año} • ${auto.km} km • USD ${auto.precio}<br>
+  Estado: ${auto.vendido ? "VENDIDO ❌" : "Disponible ✅"}<br>
+
+  ${!auto.vendido ? `<button class="vendido-btn">Marcar como vendido</button>` : ""}
+  <button class="borrar-btn">🗑️ Borrar auto</button>
+`;
+
+      const btnVendido = div.querySelector(".vendido-btn");
+const btnBorrar = div.querySelector(".borrar-btn");
+
+if (btnVendido) {
+  btnVendido.addEventListener("click", () => {
+    autos[index].vendido = true;
+    guardarAutos(autos);
+    renderAutos();
+  });
+}
+
+btnBorrar.addEventListener("click", () => {
+  const confirmar = confirm(
+    `¿Seguro que querés borrar el ${auto.marca} ${auto.modelo}?`
+  );
+
+  if (confirmar) {
+    autos.splice(index, 1); // elimina el auto
+    guardarAutos(autos);
+    renderAutos();
+  }
+});
 
       const btn = div.querySelector("button");
       if (btn) {
