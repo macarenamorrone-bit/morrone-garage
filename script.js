@@ -35,7 +35,11 @@ const autos = JSON.parse(localStorage.getItem("autos")) || [];
       .sort((a, b) => b.destacado - a.destacado)
       .forEach(auto => {
         const card = document.createElement("div");
-        card.className = auto.destacado ? "card destacado" : "card";
+        card.className = `
+  card
+  ${auto.destacado ? "destacado" : ""}
+  ${auto.vendido ? "vendido" : ""}
+`;
 
         card.innerHTML = `
           ${auto.destacado && !auto.vendido ? `<span class="badge">DESTACADO</span>` : ""}
@@ -97,6 +101,7 @@ const autos = JSON.parse(localStorage.getItem("autos")) || [];
   mostrarAutos(autos);
 
 });
+
 
 
 
