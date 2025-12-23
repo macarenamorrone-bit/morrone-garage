@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+const autos = JSON.parse(localStorage.getItem("autos")) || [];
+
 
   const WHATSAPP = "5492291466679";
 
@@ -95,5 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarAutos(autos);
 
 });
+
 
 
