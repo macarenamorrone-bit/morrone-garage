@@ -42,6 +42,12 @@
       border-radius: 8px;
     }
 
+    .auto img {
+      width: 100%;
+      margin-bottom: 8px;
+      border-radius: 6px;
+    }
+
     .auto button {
       margin-top: 8px;
       background: #333;
@@ -104,11 +110,17 @@
       const div = document.createElement("div");
       div.className = "auto";
 
+      let fotosHTML = "";
+      auto.imagenes.forEach(img => {
+        fotosHTML += `<img src="${img}">`;
+      });
+
       div.innerHTML = `
+        ${fotosHTML}
+
         <strong>${auto.marca} ${auto.modelo}</strong><br>
         ${auto.año} • ${auto.km} km • USD ${auto.precio}<br>
         Estado: ${auto.vendido ? "VENDIDO ❌" : "Disponible ✅"}<br>
-        Fotos: ${auto.imagenes.length}<br>
 
         ${!auto.vendido ? `<button class="vendido">Marcar como vendido</button>` : ""}
         <button class="borrar">🗑️ Borrar auto</button>
@@ -118,24 +130,20 @@
       const btnBorrar = div.querySelector(".borrar");
 
       if (btnVendido) {
-        btnVendido.addEventListener("click", () => {
+        btnVendido.onclick = () => {
           autos[index].vendido = true;
           guardarAutos(autos);
           renderAutos();
-        });
+        };
       }
 
-      btnBorrar.addEventListener("click", () => {
-        const confirmar = confirm(
-          `¿Seguro que querés borrar el ${auto.marca} ${auto.modelo}?`
-        );
-
-        if (confirmar) {
+      btnBorrar.onclick = () => {
+        if (confirm(`¿Seguro que querés borrar el ${auto.marca} ${auto.modelo}?`)) {
           autos.splice(index, 1);
           guardarAutos(autos);
           renderAutos();
         }
-      });
+      };
 
       listaAutos.appendChild(div);
     });
@@ -153,7 +161,6 @@
       km: Number(inputs[3].value),
       precio: Number(inputs[4].value),
 
-      // 🔥 VARIAS IMÁGENES
       imagenes: inputs[5].value
         .split(",")
         .map(url => url.trim()),
