@@ -45,7 +45,7 @@ const autos = JSON.parse(localStorage.getItem("autos")) || [];
           ${auto.destacado && !auto.vendido ? `<span class="badge">DESTACADO</span>` : ""}
           ${auto.vendido ? `<span class="badge vendido">VENDIDO</span>` : ""}
 
-          <img src="${auto.imagen}">
+          <img src="${auto.imagenes[0]}">
           <h3>${auto.marca} ${auto.modelo}</h3>
           <p>${auto.año} • ${auto.km.toLocaleString()} km</p>
           <strong>USD ${auto.precio.toLocaleString()}</strong>
@@ -101,6 +101,7 @@ const autos = JSON.parse(localStorage.getItem("autos")) || [];
   mostrarAutos(autos);
 
 });
+
 
 
 
